@@ -1,4 +1,4 @@
-// Cases 01-06: null / invalid pointer faults.
+﻿// Cases 01-06: null / invalid pointer faults.
 // Each case crashes on a specific line marked with a fault comment, so that
 // expected_answers.json can be generated from the sources.
 

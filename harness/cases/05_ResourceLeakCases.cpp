@@ -1,4 +1,4 @@
-// Cases 25-30: heap, QObject, QSharedPointer, GDI, kernel handle and thread leaks.
+﻿// Cases 25-30: heap, QObject, QSharedPointer, GDI, kernel handle and thread leaks.
 // Every case arms the watchdog with full memory + handle data so the dump can be
 // used for !heap / !handle / !address analysis.
 

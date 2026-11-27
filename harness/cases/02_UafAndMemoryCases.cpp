@@ -1,4 +1,4 @@
-// Cases 07-12: use-after-free, double free, buffer overruns and stack exhaustion.
+﻿// Cases 07-12: use-after-free, double free, buffer overruns and stack exhaustion.
 
 #include "core/CaseRegistry.h"
 #include "core/DumpHelper.h"

@@ -1,4 +1,4 @@
-// Cases 19-24: container/iterator misuse, data races, deadlocks and hangs.
+﻿// Cases 19-24: container/iterator misuse, data races, deadlocks and hangs.
 
 #include "core/CaseRegistry.h"
 #include "core/DumpHelper.h"

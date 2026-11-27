@@ -1,4 +1,4 @@
-#include "core/DumpHelper.h"
+﻿#include "core/DumpHelper.h"
 
 #include <windows.h>
 #include <dbghelp.h>

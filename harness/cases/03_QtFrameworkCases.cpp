@@ -1,4 +1,4 @@
-// Cases 13-18: Qt framework lifetime, thread affinity and model-pointer faults.
+﻿// Cases 13-18: Qt framework lifetime, thread affinity and model-pointer faults.
 
 #include "core/CaseRegistry.h"
 #include "core/DumpHelper.h"

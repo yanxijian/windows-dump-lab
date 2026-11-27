@@ -2,6 +2,7 @@
 
 **English** · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
 
+[![hygiene](https://github.com/yanxijian/windows-dump-lab/actions/workflows/hygiene.yml/badge.svg)](https://github.com/yanxijian/windows-dump-lab/actions/workflows/hygiene.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078d4.svg)](#)
 [![Cases](https://img.shields.io/badge/Cases-30-2ea44f.svg)](#)

@@ -1,4 +1,4 @@
-#Requires -Version 5.1
+﻿#Requires -Version 5.1
 <#
 .SYNOPSIS
     Build windows-dump-lab and run all 30 fault cases, producing one dump per case.

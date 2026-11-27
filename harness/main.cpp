@@ -1,4 +1,4 @@
-// windows-dump-lab: 30 fault scenarios for exercising the windows-dump-analysis skill.
+﻿// windows-dump-lab: 30 fault scenarios for exercising the windows-dump-analysis skill.
 //
 //   CrashHarness.exe --case <1..30>    run one scenario and produce its dump
 //   CrashHarness.exe --list            print every scenario

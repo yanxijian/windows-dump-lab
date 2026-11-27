@@ -1,12 +1,13 @@
 # windows-dump-lab
 
-**简体中文** · [English](README.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
+**ç®€ä½“ä¸­æ–‡** Â· [English](README.md) Â· [æ—¥æœ¬èªž](README.ja.md) Â· [í•œêµ­ì–´](README.ko.md)
 
-<!-- translated-from: README.md sha256:44a2801fd3e9 -->
-
+[![hygiene](https://github.com/yanxijian/windows-dump-lab/actions/workflows/hygiene.yml/badge.svg)](https://github.com/yanxijian/windows-dump-lab/actions/workflows/hygiene.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078d4.svg)](#)
 [![Cases](https://img.shields.io/badge/Cases-30-2ea44f.svg)](#)
+
+<!-- translated-from: README.md sha256:b0f686ab2e13 -->
 
 面向 [windows-dump-analysis](../windows-dump-analysis) 技能的故障注入靶场。它构建
 `CrashHarness.exe`——一个带 30 个可选故障场景的 C++17 + Qt 控制台程序——并把每次运行变成一份真实的
