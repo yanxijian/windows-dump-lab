@@ -1,0 +1,12 @@
+# Build tree, generated dumps and the deployed Qt runtime
+build/
+output/
+
+# Local CMake artefacts that can leak into the source tree
+harness/**/*.user
+*.dmp
+cdb-*.txt
+*.log
+
+# Editor / tooling
+.vs/

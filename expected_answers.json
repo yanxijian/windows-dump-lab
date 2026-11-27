@@ -1,0 +1,406 @@
+{
+    "skill":  "windows-dump-analysis",
+    "lab":  "windows-dump-lab",
+    "produced_by":  "CrashHarness.exe --case \u003cid\u003e",
+    "dump_dir":  "output/dumps",
+    "notes":  [
+                  "expected_line_approx points at the crashing statement (or the leak source) marked with a \"@fault\" comment in the case sources.",
+                  "Case 09 and 10 dumps are small by design: heap corruption (0xC0000374) is dumped with MiniDumpNormal because the heap lock is held while the exception is raised, and /GS failures go through fastfail.",
+                  "Regenerate with: powershell -NoProfile -File scripts\\gen_expected_answers.ps1"
+              ],
+    "cases":  [
+                  {
+                      "case_id":  1,
+                      "case_name":  "01_nullptr_member_read",
+                      "dump_file":  "01_nullptr_member_read.dmp",
+                      "expected_source_file":  "harness/cases/01_NullPtrCases.cpp",
+                      "expected_line_approx":  30,
+                      "root_cause_keywords":  [
+                                                  "nullptr",
+                                                  "member read",
+                                                  "0xC0000005",
+                                                  "nested call"
+                                              ]
+                  },
+                  {
+                      "case_id":  2,
+                      "case_name":  "02_nullptr_virtual_call",
+                      "dump_file":  "02_nullptr_virtual_call.dmp",
+                      "expected_source_file":  "harness/cases/01_NullPtrCases.cpp",
+                      "expected_line_approx":  63,
+                      "root_cause_keywords":  [
+                                                  "nullptr this",
+                                                  "non-virtual call",
+                                                  "member access",
+                                                  "0xC0000005"
+                                              ]
+                  },
+                  {
+                      "case_id":  3,
+                      "case_name":  "03_qt_qobject_cast_null",
+                      "dump_file":  "03_qt_qobject_cast_null.dmp",
+                      "expected_source_file":  "harness/cases/01_NullPtrCases.cpp",
+                      "expected_line_approx":  82,
+                      "root_cause_keywords":  [
+                                                  "qobject_cast",
+                                                  "sender",
+                                                  "nullptr",
+                                                  "QPushButton",
+                                                  "0xC0000005"
+                                              ]
+                  },
+                  {
+                      "case_id":  4,
+                      "case_name":  "04_singleton_shutdown_null",
+                      "dump_file":  "04_singleton_shutdown_null.dmp",
+                      "expected_source_file":  "harness/cases/01_NullPtrCases.cpp",
+                      "expected_line_approx":  109,
+                      "root_cause_keywords":  [
+                                                  "singleton",
+                                                  "shutdown",
+                                                  "dangling pointer",
+                                                  "nullptr",
+                                                  "0xC0000005"
+                                              ]
+                  },
+                  {
+                      "case_id":  5,
+                      "case_name":  "05_uninitialized_wild_ptr",
+                      "dump_file":  "05_uninitialized_wild_ptr.dmp",
+                      "expected_source_file":  "harness/cases/01_NullPtrCases.cpp",
+                      "expected_line_approx":  135,
+                      "root_cause_keywords":  [
+                                                  "uninitialized member",
+                                                  "wild pointer",
+                                                  "0xCDCDCDCD",
+                                                  "0xC0000005"
+                                              ]
+                  },
+                  {
+                      "case_id":  6,
+                      "case_name":  "06_dll_getprocaddress_null",
+                      "dump_file":  "06_dll_getprocaddress_null.dmp",
+                      "expected_source_file":  "harness/cases/01_NullPtrCases.cpp",
+                      "expected_line_approx":  148,
+                      "root_cause_keywords":  [
+                                                  "GetProcAddress",
+                                                  "nullptr",
+                                                  "missing export",
+                                                  "0xC0000005"
+                                              ]
+                  },
+                  {
+                      "case_id":  7,
+                      "case_name":  "07_cpp_direct_uaf_vtable",
+                      "dump_file":  "07_cpp_direct_uaf_vtable.dmp",
+                      "expected_source_file":  "harness/cases/02_UafAndMemoryCases.cpp",
+                      "expected_line_approx":  40,
+                      "root_cause_keywords":  [
+                                                  "use-after-free",
+                                                  "vtable",
+                                                  "0xDD",
+                                                  "virtual call",
+                                                  "0xC0000005"
+                                              ]
+                  },
+                  {
+                      "case_id":  8,
+                      "case_name":  "08_double_free_heap",
+                      "dump_file":  "08_double_free_heap.dmp",
+                      "expected_source_file":  "harness/cases/02_UafAndMemoryCases.cpp",
+                      "expected_line_approx":  50,
+                      "root_cause_keywords":  [
+                                                  "double free",
+                                                  "heap",
+                                                  "0xC0000374"
+                                              ]
+                  },
+                  {
+                      "case_id":  9,
+                      "case_name":  "09_heap_buffer_overflow",
+                      "dump_file":  "09_heap_buffer_overflow.dmp",
+                      "expected_source_file":  "harness/cases/02_UafAndMemoryCases.cpp",
+                      "expected_line_approx":  68,
+                      "root_cause_keywords":  [
+                                                  "heap overflow",
+                                                  "block header",
+                                                  "0xC0000374",
+                                                  "private heap"
+                                              ]
+                  },
+                  {
+                      "case_id":  10,
+                      "case_name":  "10_stack_buffer_overflow",
+                      "dump_file":  "10_stack_buffer_overflow.dmp",
+                      "expected_source_file":  "harness/cases/02_UafAndMemoryCases.cpp",
+                      "expected_line_approx":  83,
+                      "root_cause_keywords":  [
+                                                  "stack buffer overrun",
+                                                  "/GS cookie",
+                                                  "0xC0000409",
+                                                  "fastfail"
+                                              ]
+                  },
+                  {
+                      "case_id":  11,
+                      "case_name":  "11_stack_overflow_recursion",
+                      "dump_file":  "11_stack_overflow_recursion.dmp",
+                      "expected_source_file":  "harness/cases/02_UafAndMemoryCases.cpp",
+                      "expected_line_approx":  94,
+                      "root_cause_keywords":  [
+                                                  "stack overflow",
+                                                  "unbounded recursion",
+                                                  "0xC00000FD"
+                                              ]
+                  },
+                  {
+                      "case_id":  12,
+                      "case_name":  "12_dangling_reference_return",
+                      "dump_file":  "12_dangling_reference_return.dmp",
+                      "expected_source_file":  "harness/cases/02_UafAndMemoryCases.cpp",
+                      "expected_line_approx":  121,
+                      "root_cause_keywords":  [
+                                                  "dangling reference",
+                                                  "QByteArray",
+                                                  "0xCD",
+                                                  "0xC0000005"
+                                              ]
+                  },
+                  {
+                      "case_id":  13,
+                      "case_name":  "13_qt_deleteLater_lambda_uaf",
+                      "dump_file":  "13_qt_deleteLater_lambda_uaf.dmp",
+                      "expected_source_file":  "harness/cases/03_QtFrameworkCases.cpp",
+                      "expected_line_approx":  56,
+                      "root_cause_keywords":  [
+                                                  "deleteLater",
+                                                  "singleShot",
+                                                  "lambda capture this",
+                                                  "use-after-free"
+                                              ]
+                  },
+                  {
+                      "case_id":  14,
+                      "case_name":  "14_qt_parent_tree_uaf",
+                      "dump_file":  "14_qt_parent_tree_uaf.dmp",
+                      "expected_source_file":  "harness/cases/03_QtFrameworkCases.cpp",
+                      "expected_line_approx":  86,
+                      "root_cause_keywords":  [
+                                                  "parent-child",
+                                                  "QObject",
+                                                  "dangling pointer",
+                                                  "QPointer"
+                                              ]
+                  },
+                  {
+                      "case_id":  15,
+                      "case_name":  "15_qt_cross_thread_ui",
+                      "dump_file":  "15_qt_cross_thread_ui.dmp",
+                      "expected_source_file":  "harness/cases/03_QtFrameworkCases.cpp",
+                      "expected_line_approx":  108,
+                      "root_cause_keywords":  [
+                                                  "cross-thread",
+                                                  "QWidget",
+                                                  "thread affinity",
+                                                  "GUI thread"
+                                              ]
+                  },
+                  {
+                      "case_id":  16,
+                      "case_name":  "16_qt_signal_loop_overflow",
+                      "dump_file":  "16_qt_signal_loop_overflow.dmp",
+                      "expected_source_file":  "harness/cases/03_QtFrameworkCases.cpp",
+                      "expected_line_approx":  211,
+                      "root_cause_keywords":  [
+                                                  "signal",
+                                                  "slot",
+                                                  "recursive emit",
+                                                  "0xC00000FD"
+                                              ]
+                  },
+                  {
+                      "case_id":  17,
+                      "case_name":  "17_qt_slot_during_destruction",
+                      "dump_file":  "17_qt_slot_during_destruction.dmp",
+                      "expected_source_file":  "harness/cases/03_QtFrameworkCases.cpp",
+                      "expected_line_approx":  127,
+                      "root_cause_keywords":  [
+                                                  "pure virtual",
+                                                  "_purecall",
+                                                  "destructor",
+                                                  "0xC0000409"
+                                              ]
+                  },
+                  {
+                      "case_id":  18,
+                      "case_name":  "18_qt_invalid_model_index",
+                      "dump_file":  "18_qt_invalid_model_index.dmp",
+                      "expected_source_file":  "harness/cases/03_QtFrameworkCases.cpp",
+                      "expected_line_approx":  190,
+                      "root_cause_keywords":  [
+                                                  "QModelIndex",
+                                                  "internalPointer",
+                                                  "dangling",
+                                                  "QAbstractItemModel"
+                                              ]
+                  },
+                  {
+                      "case_id":  19,
+                      "case_name":  "19_stl_iterator_invalidation",
+                      "dump_file":  "19_stl_iterator_invalidation.dmp",
+                      "expected_source_file":  "harness/cases/04_ConcurrencyCases.cpp",
+                      "expected_line_approx":  52,
+                      "root_cause_keywords":  [
+                                                  "iterator invalidation",
+                                                  "vector erase",
+                                                  "nullptr dereference"
+                                              ]
+                  },
+                  {
+                      "case_id":  20,
+                      "case_name":  "20_multithread_map_race",
+                      "dump_file":  "20_multithread_map_race.dmp",
+                      "expected_source_file":  "harness/cases/04_ConcurrencyCases.cpp",
+                      "expected_line_approx":  134,
+                      "root_cause_keywords":  [
+                                                  "data race",
+                                                  "unordered_map",
+                                                  "rehash",
+                                                  "private heap",
+                                                  "heap corruption"
+                                              ]
+                  },
+                  {
+                      "case_id":  21,
+                      "case_name":  "21_deadlock_abba_mutex",
+                      "dump_file":  "21_deadlock_abba_mutex.dmp",
+                      "expected_source_file":  "harness/cases/04_ConcurrencyCases.cpp",
+                      "expected_line_approx":  167,
+                      "root_cause_keywords":  [
+                                                  "deadlock",
+                                                  "AB-BA",
+                                                  "QMutex",
+                                                  "lock order"
+                                              ]
+                  },
+                  {
+                      "case_id":  22,
+                      "case_name":  "22_deadlock_sendmessage",
+                      "dump_file":  "22_deadlock_sendmessage.dmp",
+                      "expected_source_file":  "harness/cases/04_ConcurrencyCases.cpp",
+                      "expected_line_approx":  191,
+                      "root_cause_keywords":  [
+                                                  "deadlock",
+                                                  "BlockingQueuedConnection",
+                                                  "QMutex",
+                                                  "GUI thread"
+                                              ]
+                  },
+                  {
+                      "case_id":  23,
+                      "case_name":  "23_hang_main_thread_cpu",
+                      "dump_file":  "23_hang_main_thread_cpu.dmp",
+                      "expected_source_file":  "harness/cases/04_ConcurrencyCases.cpp",
+                      "expected_line_approx":  211,
+                      "root_cause_keywords":  [
+                                                  "hang",
+                                                  "CPU spin",
+                                                  "main thread",
+                                                  "watchdog capture"
+                                              ]
+                  },
+                  {
+                      "case_id":  24,
+                      "case_name":  "24_hang_main_thread_io",
+                      "dump_file":  "24_hang_main_thread_io.dmp",
+                      "expected_source_file":  "harness/cases/04_ConcurrencyCases.cpp",
+                      "expected_line_approx":  224,
+                      "root_cause_keywords":  [
+                                                  "hang",
+                                                  "WaitForSingleObject",
+                                                  "INFINITE",
+                                                  "watchdog capture"
+                                              ]
+                  },
+                  {
+                      "case_id":  25,
+                      "case_name":  "25_leak_cpp_heap_blocks",
+                      "dump_file":  "25_leak_cpp_heap_blocks.dmp",
+                      "expected_source_file":  "harness/cases/05_ResourceLeakCases.cpp",
+                      "expected_line_approx":  30,
+                      "root_cause_keywords":  [
+                                                  "leak",
+                                                  "heap blocks",
+                                                  "1 MB each",
+                                                  "200 MB",
+                                                  "!heap -stat"
+                                              ]
+                  },
+                  {
+                      "case_id":  26,
+                      "case_name":  "26_leak_qt_orphan_qobjects",
+                      "dump_file":  "26_leak_qt_orphan_qobjects.dmp",
+                      "expected_source_file":  "harness/cases/05_ResourceLeakCases.cpp",
+                      "expected_line_approx":  54,
+                      "root_cause_keywords":  [
+                                                  "leak",
+                                                  "QObject",
+                                                  "orphan",
+                                                  "no parent",
+                                                  "3000 objects"
+                                              ]
+                  },
+                  {
+                      "case_id":  27,
+                      "case_name":  "27_leak_qsharedpointer_cycle",
+                      "dump_file":  "27_leak_qsharedpointer_cycle.dmp",
+                      "expected_source_file":  "harness/cases/05_ResourceLeakCases.cpp",
+                      "expected_line_approx":  82,
+                      "root_cause_keywords":  [
+                                                  "leak",
+                                                  "QSharedPointer",
+                                                  "reference cycle"
+                                              ]
+                  },
+                  {
+                      "case_id":  28,
+                      "case_name":  "28_leak_gdi_handles",
+                      "dump_file":  "28_leak_gdi_handles.dmp",
+                      "expected_source_file":  "harness/cases/05_ResourceLeakCases.cpp",
+                      "expected_line_approx":  97,
+                      "root_cause_keywords":  [
+                                                  "leak",
+                                                  "GDI",
+                                                  "HDC",
+                                                  "HBITMAP",
+                                                  "CreateCompatibleDC"
+                                              ]
+                  },
+                  {
+                      "case_id":  29,
+                      "case_name":  "29_leak_kernel_event_handles",
+                      "dump_file":  "29_leak_kernel_event_handles.dmp",
+                      "expected_source_file":  "harness/cases/05_ResourceLeakCases.cpp",
+                      "expected_line_approx":  118,
+                      "root_cause_keywords":  [
+                                                  "leak",
+                                                  "handle",
+                                                  "CreateEvent",
+                                                  "kernel object"
+                                              ]
+                  },
+                  {
+                      "case_id":  30,
+                      "case_name":  "30_leak_zombie_threads",
+                      "dump_file":  "30_leak_zombie_threads.dmp",
+                      "expected_source_file":  "harness/cases/05_ResourceLeakCases.cpp",
+                      "expected_line_approx":  138,
+                      "root_cause_keywords":  [
+                                                  "leak",
+                                                  "thread",
+                                                  "150 threads",
+                                                  "never joined"
+                                              ]
+                  }
+              ]
+}
