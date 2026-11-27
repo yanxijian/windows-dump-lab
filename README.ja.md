@@ -7,9 +7,9 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078d4.svg)](#)
 [![Cases](https://img.shields.io/badge/Cases-30-2ea44f.svg)](#)
 
-<!-- translated-from: README.md sha256:b0f686ab2e13 -->
+<!-- translated-from: README.md sha256:518bdedc9f01 -->
 
-[windows-dump-analysis](../windows-dump-analysis) スキル向けのフォールトインジェクション実験場です。
+[windows-dump-analysis](https://github.com/yanxijian/windows-dump-analysis) スキル向けのフォールトインジェクション実験場です。
 30 個の選択可能な障害シナリオを持つ C++17 + Qt コンソールプログラム `CrashHarness.exe` をビルドし、
 実行ごとに実際の `.dmp` を生成して、スキルのコマンドチェーンで解析できるようにします。
 

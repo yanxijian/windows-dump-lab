@@ -7,9 +7,9 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078d4.svg)](#)
 [![Cases](https://img.shields.io/badge/Cases-30-2ea44f.svg)](#)
 
-<!-- translated-from: README.md sha256:b0f686ab2e13 -->
+<!-- translated-from: README.md sha256:518bdedc9f01 -->
 
-[windows-dump-analysis](../windows-dump-analysis) 스킬을 위한 오류 주입 실험장입니다. 선택 가능한 30개
+[windows-dump-analysis](https://github.com/yanxijian/windows-dump-analysis) 스킬을 위한 오류 주입 실험장입니다. 선택 가능한 30개
 장애 시나리오를 가진 C++17 + Qt 콘솔 프로그램 `CrashHarness.exe` 를 빌드하고, 실행할 때마다 실제 `.dmp`
 를 만들어 스킬의 명령 체인으로 분석할 수 있게 합니다.
 

@@ -7,7 +7,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078d4.svg)](#)
 [![Cases](https://img.shields.io/badge/Cases-30-2ea44f.svg)](#)
 
-A fault-injection lab for the [windows-dump-analysis](../windows-dump-analysis) skill. It builds
+A fault-injection lab for the [windows-dump-analysis](https://github.com/yanxijian/windows-dump-analysis) skill. It builds
 `CrashHarness.exe` — a C++17 + Qt console program with 30 selectable failure scenarios — and turns
 every run into a real `.dmp` that the skill's command chains can analyse.
 
